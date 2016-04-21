@@ -1,0 +1,42 @@
+body {
+	font-family: "Segoe UI";
+}
+::-webkit-input-placeholder {
+            font-style: italic;
+}
+
+
+
+#chat-panel {
+	position: relative;
+	background-color: #777;
+	color : white;
+	width :35em;
+	height: 27em;
+	margin-top: 20px;
+}
+
+
+#chat-area {
+ 	position: relative;
+ 	top: 1em;
+ 	left: 1em;
+ 	background-color: #999;
+    width: 16em;
+    height: 300px;
+    word-wrap: break-word;
+    overflow-y: scroll;
+}
+
+#active-users {
+	float: right;
+	margin-right: 2em;
+	position: static;
+}
+
+#chat-send {
+position: relative;
+	top: 1em;
+	left: 2em;
+}
+

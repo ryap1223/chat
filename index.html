@@ -1,11 +1,10 @@
+<!DOCTYPE HTML>
 <html>
 <head>
     <title>My Webchat</title>
-<head>
         <!-- Latest compiled and minified CSS -->
-        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
-        <link rel="stylesheet" type="text/css" href="css/index.css">
-
+       <!--  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous"> -->
+        <link rel="stylesheet" type="text/css" href="css/index.css">   
 </head>
 <body>
 
@@ -14,17 +13,19 @@
         <input type = "text" placeholder = "Please enter Username">
         <input type = "email" placeholder = "Please enter your E-mail">
         <input type = "submit" value = "Register">
-</form>
+    </form>
 
 
-<div id = "chat-container">
+    <div id = "chat-panel">
+        <div id = "active-users"><p>*Users will be displayed here.</p></div>
 
-    <div id="chat-line-holder" ></div>
+        <div id="chat-line-holder"><p id = "chat-area">*Chat messages appear here.</p></div>
 
-        <input type = "text" placeholder = "Type your text here...">
-        <input type = "submit" value = "Send" >
-
-</div>
+        <div id = "chat-send">
+            <input type = "text" placeholder = "Type your text here...">
+            <input type = "submit" value = "Send" >
+        </div>
+    </div>
 
 </body>
 </html>
