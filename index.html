@@ -4,28 +4,46 @@
     <title>My Webchat</title>
         <!-- Latest compiled and minified CSS -->
        <!--  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous"> -->
-        <link rel="stylesheet" type="text/css" href="css/index.css">   
+        <link rel="stylesheet" type="text/css" href="css\index.css">
+         <script   src="https://code.jquery.com/jquery-2.2.3.min.js"   integrity="sha256-a23g1Nt4dtEYOj7bR+vTu7+T8VP13humZFBJNIYoEJo="   crossorigin="anonymous"></script>
+        <!-- // <script src="server.js"></script> -->
 </head>
 <body>
 
-    <form method = "post">
-        <h2>Please Enter details below.</h2>
-        <input type = "text" placeholder = "Please enter Username">
-        <input type = "email" placeholder = "Please enter your E-mail">
-        <input type = "submit" value = "Register">
-    </form>
-
-
-    <div id = "chat-panel">
-        <div id = "active-users"><p>*Users will be displayed here.</p></div>
-
-        <div id="chat-line-holder"><p id = "chat-area">*Chat messages appear here.</p></div>
-
-        <div id = "chat-send">
-            <input type = "text" placeholder = "Type your text here...">
-            <input type = "submit" value = "Send" >
-        </div>
+    <div class = "chat">
+        <input type = "text" class = "chat-name" placeholder = "Please enter Username" >
+        <div class= "chat-messages"></div>
+        <textarea class = "chat-textarea" placeholder = "Type your message...."></textarea>
+    
+      
+        <!-- <input type = "submit" value = "Send"> -->
     </div>
+
+
+<!-- <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.2/jquery.min.js"></script> -->
+
+   <script>
+        
+        var msg = function() {
+                return this.find('.chat-messages'); 
+                msg.append('<div class = "chat-messages">TAEsdsdsdssdsdsdddfdfdfdfdfdsdsd</div>');
+                
+        };
+
+        $('.chat-messages').append("nimasasal");
+
+        
+
+    var username = function () {
+
+    };
+           
+        // connection.query('SELECT * FROM message', function(err, rows, fields) {
+        //     if (err) throw err;
+        //         console.log(rows);
+        //         // messages.append('<div class = "chat-messages">TAEsdsdsdsdsdsd' + rows + '</div>');
+        //     });
+        </script>
 
 </body>
 </html>
