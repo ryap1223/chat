@@ -1,29 +1,27 @@
-var mysql= require('mysql');
+var http = require('http'),
+    fs = require('fs');
 
-var connection = mysql.createConnection({
 
-	host : 'localhost',
-	user: 'root',
-	password: '',
-	database: 'chat'
+fs.readFile('./index.html',  function (err, html) {
+    if (err) throw err; 
+         
+    http.createServer(function(request, response) {  
+        response.writeHeader(200, {"Content-Type": "text/html"});  
+        response.write(html);  
+        response.end();  
+    }).listen(8000);
 });
-connection.connect();
 
 
+function style(response) {
 
+  console.log("Request handler 'style' was called.");
 
+  fs.readFile("css/index.css", function(error, file) {
+	if(err) throw err;
+	response.writeHead(200, {"Content-Type": "text/css"});
+	response.write(file);
+	response.end();
+  });
 
-// CREATE DATABASE FIRST
-
-
-// mongo.connect('mongodb://127.0.0.1/webchat', function (err, db){
-// 	if(err) throw err;
-
-// 	client.on('connection', function(socket){
-
-// 		socket.on('input', function(data) {
-// 		//console.log(data);
-// 		});
-
-// 	});
-// });
+}
