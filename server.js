@@ -1,27 +1,62 @@
-var http = require('http'),
-    fs = require('fs');
+var fs = require('fs'),
+    http = require('http'),
+    url = require('url');
+    
 
 
-fs.readFile('./index.html',  function (err, html) {
-    if (err) throw err; 
-         
-    http.createServer(function(request, response) {  
-        response.writeHeader(200, {"Content-Type": "text/html"});  
-        response.write(html);  
-        response.end();  
-    }).listen(8000);
-});
+http.createServer(function (req, res) {
+  fs.readFile(__dirname + req.url, function (err,data) {
+    
+    console.log('Loaded: ' + req.url);  
+    if (err) {
+      res.writeHead(404);
+      res.end();
+      return;
+    }
+    res.writeHead(200);
+    res.end(data);
+    req.url = url.parse(req.url);  
+
+    });
+
+}).listen(8000);
 
 
-function style(response) {
+//  To-do: make this server static and be able 
+//  to assign specific URLs on specific pages/links.
 
-  console.log("Request handler 'style' was called.");
 
-  fs.readFile("css/index.css", function(error, file) {
-	if(err) throw err;
-	response.writeHead(200, {"Content-Type": "text/css"});
-	response.write(file);
-	response.end();
-  });
 
-}
+
+
+
+
+
+
+
+
+
+
+
+
+// http.get('./index.html', function(req, res) {
+//     console.log(`Got response: ${res.statusCode}`);
+//       // consume response body
+//       // fs.readFile(__dirname + req.url, function (err,data) {
+//       //   if (err) {
+//       //     res.writeHead(404);
+//       //     res.end(JSON.stringify(err));
+//       //     return;
+//       //   }
+//       //   res.writeHead(200);
+//       //   res.end(data);
+//       });
+
+
+//       res.resume();
+//     }).on('error', (e) => {
+//       console.log(`Got error: ${e.message}`);
+// });
+//   });
+
+
