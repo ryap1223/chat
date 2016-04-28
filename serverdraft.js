@@ -4,9 +4,26 @@ var fs = require('fs');
 var path = require('path');
 
 http.createServer(function (request, response) {
-    console.log('request starting...');
+    // console.log('request starting...');
   
-  var filePath = '.' + request.url;
+  var url = request.url;
+  
+    switch(url) {
+      case '/' :
+        getStaticFileContent(res, 'index.html');
+        break;
+      case '/chat' :
+        getStaticFileContent(res, 'chat.html');
+        break;
+      case '/about' :
+        getStaticFileContent(res, 'about.html');
+        break;
+      default :
+        res.writeHead(404);
+        res.end();
+      }
+
+  var filePath = '.' + url;
   if (filePath == './')
     filePath = './index.htm';
     
@@ -22,7 +39,7 @@ http.createServer(function (request, response) {
   }
   
   
-  fs.exists(filePath, function(exists) {
+    fs.exists(filePath, function(exists) {
   
     if (exists) {
       fs.readFile(filePath, function(error, content) {
