@@ -2,23 +2,22 @@ var http = require('http'),
     fs = require('fs');
     
     
-http.createServer(function (request, response) {
+http.createServer(function (req, res) {
   
-  var link = __dirname;
-  
-  fs.readFile(link + request.url, function (err,data) {
-     console.log(request.url);  
+  fs.readFile('./' + req.url, function (err,data) {
+    
+   // console.log(req.url);  
     if (err) {
-    response.writeHead(404);
-    response.end();
-    return;
+      res.writeHead(404);
+      res.end();
+      return;
     }
-  response.writeHead(200);
-  response.end(data);
+
+  res.writeHead(200, {'Content-Type': 'text/html'});
+  res.end(data);
 });
     
 }).listen(8000);
 
 
-//  To-do: make this server static and be able 
-//  to assign specific URLs on specific pages/links.
+//  To-do: set specific URLs on specific pages/links.
