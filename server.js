@@ -1,47 +1,50 @@
-
-var http = require('http');
-var fs = require('fs');
-var path = require('path');
-
-http.createServer(function (request, response) {
-    console.log('request starting...');
-  
-  var filePath = '.' + request.url;
-  if (filePath == './')
-    filePath = './index.htm';
+var http = require('http'),
+      fs = require('fs');
     
-  var extname = path.extname(filePath);
-  var contentType = 'text/html';
-  switch (extname) {
-    case '.js':
-      contentType = 'text/javascript';
-      break;
-    case '.css':
-      contentType = 'text/css';
-      break;
-  }
+    
+http.createServer(function (req, res) {
   
+    var url = req.url;
   
-  fs.exists(filePath, function(exists) {
-  
-    if (exists) {
-      fs.readFile(filePath, function(error, content) {
-        if (error) {
-          response.writeHead(500);
-          response.end();
-        }
-        else {
-          response.writeHead(200, { 'Content-Type': contentType });
-          response.end(content, 'utf-8');
-        }
-      });
+    switch(url) {
+      case '/' :
+        getStaticFiles(res,'www/index.html');
+        break;
+      case '/chat' :
+        getStaticFiles(res, 'www/chat.html');
+        break;
+      case '/about' :
+        getStaticFiles(res, 'www/about.html');
+        break;
+      default :
+        res.writeHead(404);
+        res.end();
     }
-    else {
-      response.writeHead(404);
-      response.end();
-    }
-  });}).listen(8000);
 
 
-//  To-do: set specific URLs on specific pages/links
+        // console.log(url);
 
+
+}).listen(8000);
+
+
+function  getStaticFiles (res, filepath) {
+
+    fs.readFile(filepath , function (err,data) {
+      if (err) {
+        res.writeHead(500);
+        res.end();
+        return;
+      }
+      if(data) {
+        res.writeHead(200);
+        res.end(data);
+      }
+    });
+  };
+
+
+
+
+
+//  To-do: make this server static for CSS and JS.

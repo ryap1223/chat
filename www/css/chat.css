@@ -4,38 +4,6 @@ input {
 	font: 14px "Segoe UI";
 }
 
-/*    LINKS/NAVBAR   */
-ul {
-	background-color: #2d505e;
-}
-
-li{
-	list-style-type: none;
-	display: inline-block;
-	padding: 10px;
-	
-}
-
-li a {
-	padding: 10px;
-}
-
-a:link, a:visited {
-	text-decoration: none;
-	color: white;
-}
-
-a:hover, a.active {
-	background-color: white;
-	color: black;
-
-}
-
-.header{
-	position: fixed;
-}
-/*   END OF LINKS/NAVBAR   */
-
 
 .chat {
 	margin: 5em;
